@@ -85,6 +85,14 @@ RUN set -x && pip install mmcv-full==1.7.0 -f https://download.openmmlab.com/mmc
 # 追加
 RUN set -x && pip install gradio
 
+# Download required models and resources
+RUN set -x \
+    && wget -nc https://lab.ndl.go.jp/dataset/ndlocr_v2/text_recognition_lightning/resnet-orient2.ckpt -P ${PROJECT_DIR}/submodules/text_recognition_lightning/models \
+    && wget -nc https://lab.ndl.go.jp/dataset/ndlocr_v2/text_recognition_lightning/rf_author/model.pkl -P ${PROJECT_DIR}/submodules/text_recognition_lightning/models/rf_author/ \
+    && wget -nc https://lab.ndl.go.jp/dataset/ndlocr_v2/text_recognition_lightning/rf_title/model.pkl -P ${PROJECT_DIR}/submodules/text_recognition_lightning/models/rf_title/ \
+    && wget -nc https://lab.ndl.go.jp/dataset/ndlocr_v2/ndl_layout/ndl_retrainmodel.pth -P ${PROJECT_DIR}/submodules/ndl_layout/models \
+    && wget -nc https://lab.ndl.go.jp/dataset/ndlocr_v2/separate_pages_mmdet/epoch_180.pth -P ${PROJECT_DIR}/submodules/separate_pages_mmdet/models
+
 WORKDIR ${PROJECT_DIR}
 
 # 追加
