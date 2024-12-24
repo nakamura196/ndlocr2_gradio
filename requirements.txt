@@ -1,0 +1,4 @@
+gradio
+nbdev
+Pillow
+pdf2image

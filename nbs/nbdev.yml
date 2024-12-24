@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "ndlocr2_gradio"
+  site-url: "https://nakamura196.github.io/ndlocr2_gradio"
+  description: ""
+  repo-branch: main
+  repo-url: "https://github.com/nakamura196/ndlocr2_gradio"
