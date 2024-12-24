@@ -10,7 +10,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
       - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.myresolver.acme.email=aaa@bbb"
+      - "--certificatesresolvers.myresolver.acme.email=${LETS_ENCRYPT_EMAIL}"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
       - "80:80"
@@ -36,8 +36,9 @@ services:
       - ./app.py:/root/ocr_cli/app.py
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ocr_cli_runner.rule=Host(`xxx.yyy.zzz`)"
+      - "traefik.http.routers.ocr_cli_runner.rule=Host(`${APP_HOST}`)"
       - "traefik.http.routers.ocr_cli_runner.entrypoints=websecure"
       - "traefik.http.routers.ocr_cli_runner.tls.certresolver=myresolver"
       - "traefik.http.services.ocr_cli_runner.loadbalancer.server.port=7860"
     command: ["python", "app.py"]  # コンテナ起動時に app.py を実行
+    # command: ["gradio", "app.py"]  # コンテナ起動時に app.py を実行

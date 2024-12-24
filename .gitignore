@@ -154,3 +154,5 @@ checklink/cookies.txt
 data
 !data/koten
 !data/koten_output
+
+!.env.exmaple

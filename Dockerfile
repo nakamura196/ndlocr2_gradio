@@ -93,6 +93,12 @@ RUN set -x \
     && wget -nc https://lab.ndl.go.jp/dataset/ndlocr_v2/ndl_layout/ndl_retrainmodel.pth -P ${PROJECT_DIR}/submodules/ndl_layout/models \
     && wget -nc https://lab.ndl.go.jp/dataset/ndlocr_v2/separate_pages_mmdet/epoch_180.pth -P ${PROJECT_DIR}/submodules/separate_pages_mmdet/models
 
+# Install pdf2image and required system dependencies
+RUN set -x \
+    && apt update \
+    && apt install -y poppler-utils \
+    && pip install pdf2image
+
 WORKDIR ${PROJECT_DIR}
 
 # 追加
