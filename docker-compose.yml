@@ -8,6 +8,8 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
       - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
       - "--certificatesresolvers.myresolver.acme.email=${LETS_ENCRYPT_EMAIL}"
@@ -31,6 +33,7 @@ services:
               count: 1
               capabilities: [gpu]
     container_name: ocr_cli_runner
+    shm_size: 256m   # /dev/shm のサイズを設定
     volumes:
       - /home/azureuser/tmpdir:/root/tmpdir/img
       - ./app.py:/root/ocr_cli/app.py
