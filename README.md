@@ -2,4 +2,4 @@
 
 以下の記事に対応したリポジトリです。
 
-https://zenn.dev/nakamura196/articles/8acca60dc66b22
+https://ldas.jp/ja/posts/building-an-ndlocr-gradio-app-using-azure-virtual/
